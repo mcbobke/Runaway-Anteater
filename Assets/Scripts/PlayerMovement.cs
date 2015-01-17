@@ -24,12 +24,12 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 currentPos = player.rigidbody2D.position;
 
-        if (Input.GetKey(KeyCode.RightArrow) && currentPos.x < 2.0f)
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             player.rigidbody2D.MovePosition(new Vector2(currentPos.x + speed, currentPos.y));
         }
 
-        else if (Input.GetKey(KeyCode.LeftArrow) && currentPos.x > -2.0f)
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             player.rigidbody2D.MovePosition(new Vector2(currentPos.x - speed, currentPos.y));
         }
@@ -37,8 +37,22 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        --collisionCount;
+        if (collision.tag == "obstacle")
+            --collisionCount;
         if (collisionCount == 0)
             Destroy(player);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "background")
+        {
+            player.rigidbody2D.MovePosition(new Vector2(0, 0));
+        }
+
+        else if (collision.gameObject.tag == "obstacle")
+        {
+            Destroy(player);
+        }
     }
 }
