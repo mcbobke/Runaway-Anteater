@@ -37,13 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "background")
-        {
-            /*player.rigidbody2D.velocity = new Vector2(0, 0);
-            player.rigidbody2D.angularVelocity = 0;*/
-        }
-
-        else if (collision.gameObject.tag == "obstacle")
+        if (collision.gameObject.tag == "obstacle")
         {
             --collisionCount;
             Destroy(collision.gameObject);
