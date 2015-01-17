@@ -24,21 +24,31 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 currentPos = player.rigidbody2D.position;
 
-        if (Input.GetKey(KeyCode.RightArrow) && currentPos.x < 2.0f)
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             player.rigidbody2D.MovePosition(new Vector2(currentPos.x + speed, currentPos.y));
         }
 
-        else if (Input.GetKey(KeyCode.LeftArrow) && currentPos.x > -2.0f)
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             player.rigidbody2D.MovePosition(new Vector2(currentPos.x - speed, currentPos.y));
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        --collisionCount;
-        if (collisionCount == 0)
-            Destroy(player);
+        if (collision.gameObject.tag == "obstacle")
+        {
+            --collisionCount;
+            Destroy(collision.gameObject);
+
+            if (collisionCount == 0)
+                Destroy(player);
+            else
+            {
+                player.rigidbody2D.MovePosition(new Vector2(0, -2.5f));
+                player.rigidbody2D.velocity = new Vector2(0, 0);
+            }
+        }
     }
 }
