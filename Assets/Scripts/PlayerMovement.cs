@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject player;
     public float speed;
+    public int collisionCount;
 
 	// Use this for initialization
 	void Start ()
@@ -32,5 +33,12 @@ public class PlayerMovement : MonoBehaviour
         {
             player.rigidbody2D.MovePosition(new Vector2(currentPos.x - speed, currentPos.y));
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        --collisionCount;
+        if (collisionCount == 0)
+            Destroy(player);
     }
 }
