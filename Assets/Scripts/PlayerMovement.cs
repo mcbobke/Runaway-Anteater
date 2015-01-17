@@ -39,14 +39,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "background")
         {
-            player.rigidbody2D.MovePosition(new Vector2(0, 0));
+            /*player.rigidbody2D.velocity = new Vector2(0, 0);
+            player.rigidbody2D.angularVelocity = 0;*/
         }
 
         else if (collision.gameObject.tag == "obstacle")
         {
             --collisionCount;
+            Destroy(collision.gameObject);
+
             if (collisionCount == 0)
                 Destroy(player);
+            else
+            {
+                player.rigidbody2D.MovePosition(new Vector2(0, -2.5f));
+                player.rigidbody2D.velocity = new Vector2(0, 0);
+            }
         }
     }
 }
