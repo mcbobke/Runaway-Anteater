@@ -35,14 +35,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "obstacle")
-            --collisionCount;
-        if (collisionCount == 0)
-            Destroy(player);
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "background")
@@ -52,7 +44,9 @@ public class PlayerMovement : MonoBehaviour
 
         else if (collision.gameObject.tag == "obstacle")
         {
-            Destroy(player);
+            --collisionCount;
+            if (collisionCount == 0)
+                Destroy(player);
         }
     }
 }
