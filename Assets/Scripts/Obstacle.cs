@@ -24,20 +24,19 @@ public class Obstacle : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "ped" && gameObject.tag == "biker")
-        {
-            Vector2 currentPos = rigidbody2D.position;
+        if (collision.gameObject.tag == "ped" && gameObject.tag == "biker") {
+						Vector2 currentPos = rigidbody2D.position;
 
-            Destroy(gameObject);
-            Destroy(collision.gameObject);
+						Destroy (gameObject);
+						Destroy (collision.gameObject);
 
-            Instantiate(pedbikecollide, currentPos, Quaternion.identity);
-        }
+						Instantiate (pedbikecollide, currentPos, Quaternion.identity);
+				} else if ((collision.gameObject.tag == "ped" || collision.gameObject.tag == "pedbikecollide") && gameObject.tag == "ped") {
+						Physics2D.IgnoreCollision (collider2D, collision.gameObject.collider2D, true);
+				} else if (collision.gameObject.tag == "pedbikecollide" && gameObject.tag == "biker") {
+						Destroy (gameObject);
+				}
 
-        else if (collision.gameObject.tag == "ped" && gameObject.tag == "ped")
-        {
-            Physics2D.IgnoreCollision(collider2D, collision.gameObject.collider2D, true);
-        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
