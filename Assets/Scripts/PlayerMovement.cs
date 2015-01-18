@@ -9,17 +9,24 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public int collisionCount;
     public Image healthBar;
+    public int invulnerability;
+    private int hitTime;
 
 	// Use this for initialization
 	void Start ()
 	{
 	    Screen.SetResolution(800, 600, false);
+        hitTime = 0;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
         MoveCharacter();
+        if (hitTime < invulnerability)
+        {
+            ++hitTime;
+        }
 	}
 
     void MoveCharacter()
@@ -41,10 +48,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "biker" || collision.gameObject.tag == "ped")
         {
-            --collisionCount;
             Destroy(collision.gameObject);
-            healthBar.fillAmount -= 0.34f;
-
+            if (hitTime == invulnerability)
+            {
+                hitTime = 0;
+                --collisionCount;
+                healthBar.fillAmount -= 0.34f;
+            }
             if (collisionCount == 0)
                 Destroy(player);
             else
