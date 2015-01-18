@@ -14,16 +14,6 @@ public class ObstacleSpawner : MonoBehaviour
 	{
 		StartCoroutine (Spawn());
 	}
-	/*
-	void Update()
-	{
-		Spawn ();
-	}
-
-	void FixedUpdate()
-	{
-		//Spawn ();
-	}*/
 	
 	IEnumerator Spawn() 
 	{
@@ -34,22 +24,6 @@ public class ObstacleSpawner : MonoBehaviour
 			yield return new WaitForSeconds (Random.Range (minRespawnTime, maxRespawnTime));
 		}
 	}
-	/*
-	void Spawn()
-    {
-		RandomizeLocation ();
-		Debug.Log (respawnTime);
-		if (respawnTime == 0) 
-		{
-			Instantiate (biker, transform.position, Quaternion.identity);
-			respawnTime = 15;
-			//respawnTime = Random.Range (minRespawnTime, maxRespawnTime);
-		} 
-		else 
-		{
-			respawnTime--;
-		}
-    }*/
 	
 	void RandomizeLocation()
 	{
