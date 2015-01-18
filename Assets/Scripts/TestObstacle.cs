@@ -20,8 +20,7 @@ public class TestObstacle : MonoBehaviour
 	
 	void Update () 
     {
-        Vector2 currentPos = obstacle.rigidbody2D.position;
-	    obstacle.rigidbody2D.MovePosition(new Vector2(currentPos.x + X_vel, currentPos.y + Y_vel));
+		transform.position = new Vector2 (transform.position.x + X_vel, transform.position.y + Y_vel);
 	}
 
     void OnCollisionEnter2D(Collision2D collision)
