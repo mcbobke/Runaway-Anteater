@@ -23,7 +23,7 @@ public class ObstacleSpawner : MonoBehaviour
 		while (true) 
 		{
 			RandomizeLocation ();
-			Instantiate (obstacle, transform.position, Quaternion.identity);
+	        Instantiate (obstacle, transform.position, Quaternion.identity);
 			yield return new WaitForSeconds (Random.Range (minRespawnTime, maxRespawnTime));
 		}
 	}

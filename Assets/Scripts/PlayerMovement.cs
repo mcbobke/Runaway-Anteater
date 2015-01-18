@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "obstacle")
+        if (collision.gameObject.tag == "biker" || collision.gameObject.tag == "ped")
         {
             --collisionCount;
             Destroy(collision.gameObject);
