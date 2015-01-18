@@ -6,9 +6,9 @@ public class ObstacleSpawner : MonoBehaviour
 	//private int respawnTime = 100;
 	public float minRespawnTime;
 	public float maxRespawnTime;
-
-    public GameObject biker;
-
+	
+	public GameObject biker;
+	
 	// Use this for initialization
 	void Start ()
 	{
@@ -24,7 +24,7 @@ public class ObstacleSpawner : MonoBehaviour
 	{
 		//Spawn ();
 	}*/
-
+	
 	IEnumerator Spawn() 
 	{
 		while (true) 
@@ -34,7 +34,7 @@ public class ObstacleSpawner : MonoBehaviour
 			yield return new WaitForSeconds (Random.Range (minRespawnTime, maxRespawnTime));
 		}
 	}
-		/*
+	/*
 	void Spawn()
     {
 		RandomizeLocation ();
@@ -50,10 +50,11 @@ public class ObstacleSpawner : MonoBehaviour
 			respawnTime--;
 		}
     }*/
-
+	
 	void RandomizeLocation()
 	{
 		float newX = Random.Range(-2.0f, 2.0f);
 		transform.position = new Vector3 (newX, transform.position.y, 0);
 	}
 }
+

@@ -6,12 +6,6 @@ public class TestObstacle : MonoBehaviour
 
     public GameObject obstacle;
     public float vel;
-
-	// Use this for initialization
-	void Start ()
-	{
-
-	}
 	
 	// Update is called once per frame
 	void Update () 
