@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BikerSlowSoawner : MonoBehaviour
+public class ObstacleSpawner: MonoBehaviour
 {
 
     public GameObject biker;
