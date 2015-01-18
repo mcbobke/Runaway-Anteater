@@ -7,11 +7,13 @@ public class PlayerMovement : MonoBehaviour
     public GameObject player;
     public float speed;
     public int collisionCount;
+	public Vector2 startPosition;
 
 	// Use this for initialization
 	void Start ()
 	{
 	    Screen.SetResolution(800, 600, false);
+		startPosition = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -46,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
                 Destroy(player);
             else
             {
-                player.rigidbody2D.MovePosition(new Vector2(0, -2.5f));
+                player.rigidbody2D.MovePosition(startPosition);
                 player.rigidbody2D.velocity = new Vector2(0, 0);
             }
         }
