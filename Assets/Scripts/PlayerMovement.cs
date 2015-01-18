@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject player;
     public float speed;
     public int collisionCount;
+    public Image healthBar;
 
 	// Use this for initialization
 	void Start ()
@@ -41,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         {
             --collisionCount;
             Destroy(collision.gameObject);
+            healthBar.fillAmount -= 0.34f;
 
             if (collisionCount == 0)
                 Destroy(player);
