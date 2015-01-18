@@ -8,6 +8,6 @@ This game was created during the 2015 Winter Quarter Game Jam hosted by the Vide
 | ------------- | ------------- | ------------- |
 | Frederick Rezine | | Audio Designer |
 | Matt Bobke  | mcbobke@gmail.com  | Programmer |
-| Nick Smith | | Programmer|
-| Nina Volkmuth | | Programmer |
-| Kevin Wong | | Programmer |
+| Nick Smith | smithne@uci.edu | Programmer|
+| Nina Volkmuth | ninavolkmuth@gmail.com | Programmer |
+| Kevin Wong | wong.kevin47@gmail.com | Programmer |
