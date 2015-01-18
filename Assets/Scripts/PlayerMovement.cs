@@ -1,28 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.ComponentModel.Design;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     public int collisionCount;
-    public Image healthBar;
     public int invulnerability;
     private int hitTime;
+
+    private Color invincibilityColor;
+
+    public Image healthBar;
 
 	void Start ()
 	{
 	    Screen.SetResolution(800, 600, false);
+        invincibilityColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
         hitTime = 0;
 	}
 	
 	void Update ()
 	{
         MoveCharacter();
-        if (hitTime < invulnerability)
-        {
-            ++hitTime;
-        }
+
+
+	    if (hitTime < invulnerability)
+	    {
+	        ++hitTime;
+
+	        renderer.material.color = invincibilityColor;
+	    }
+	    else if (renderer.material.color == invincibilityColor)
+	    {
+	        renderer.material.color = Color.white;
+	    }
+
 	}
 
     void MoveCharacter()
@@ -42,21 +56,28 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "biker" || collision.gameObject.tag == "ped")
+        if (collision.gameObject.tag == "biker" || collision.gameObject.tag == "ped" || collision.gameObject.tag == "pedbikecollide")
         {
-            Destroy(collision.gameObject);
             if (hitTime == invulnerability)
             {
+                Destroy(collision.gameObject);
+
                 hitTime = 0;
                 --collisionCount;
                 healthBar.fillAmount -= 0.34f;
+
+                if (collisionCount == 0)
+                    Destroy(gameObject);
+
+                else
+                {
+                    rigidbody2D.velocity = new Vector2(0, 0);
+                }
             }
-            if (collisionCount == 0)
-                Destroy(gameObject);
-            else
+
+            else if (hitTime < invulnerability)
             {
-                rigidbody2D.MovePosition(new Vector2(0, -2.5f));
-                rigidbody2D.velocity = new Vector2(0, 0);
+                Physics2D.IgnoreCollision(collider2D, collision.gameObject.collider2D, true);
             }
         }
     }
