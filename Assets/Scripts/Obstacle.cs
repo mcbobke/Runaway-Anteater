@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TestObstacle : MonoBehaviour
+public class Obstacle : MonoBehaviour
 {
 
     public GameObject obstacle;
