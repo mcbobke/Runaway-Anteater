@@ -14,7 +14,7 @@ public class BackgroundScroller : MonoBehaviour
     {
         Vector3 currentPos = transform.position;
 
-        if (currentPos.y <= -6.0f)
+        if (currentPos.y <= -5.85f)
         {
             transform.position = new Vector3(0, 6);
         }
