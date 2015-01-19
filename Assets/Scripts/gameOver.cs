@@ -7,6 +7,7 @@ public class gameOver : MonoBehaviour {
 	public GameObject player;
     public Text gameOverText;
     public Text scoreText;
+    public GameObject antSpawner;
 	private GameObject[] tiles;
     private int finalScore;
 	
@@ -52,6 +53,7 @@ public class gameOver : MonoBehaviour {
 	            Destroy(inGameUI[i]);
 	        }
 
+	        antSpawner.SetActive(false);
 	        gameOverText.gameObject.SetActive(true);
 	        scoreText.gameObject.SetActive(true);
 	        scoreText.text = "Your Final Score: " + finalScore + "\n Press R to restart!";
