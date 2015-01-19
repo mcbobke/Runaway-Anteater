@@ -68,11 +68,18 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             rigidbody2D.MovePosition(new Vector2(currentPos.x + speed, currentPos.y));
+            transform.eulerAngles = new Vector3(0, 0, -30);
         }
 
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             rigidbody2D.MovePosition(new Vector2(currentPos.x - speed, currentPos.y));
+            transform.eulerAngles = new Vector3(0, 0, 30);
+        }
+
+        else
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
         }
     }
 
