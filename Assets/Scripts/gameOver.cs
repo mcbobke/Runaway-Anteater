@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class gameOver : MonoBehaviour {
 
 	public GameObject player;
+    public Text gameOverText;
+    public Text scoreText;
 	private GameObject[] tiles;
+    private int finalScore;
 	
 	void Start()
-    {
+	{
 		tiles = GameObject.FindGameObjectsWithTag("backgroundTile");
 	}
 	
@@ -40,6 +44,22 @@ public class gameOver : MonoBehaviour {
 	        {
 	            ants[i].GetComponent<Obstacle>().Y_vel = 0;
 	        }
+
+	        GameObject[] inGameUI = GameObject.FindGameObjectsWithTag("ingameui");
+
+	        for (int i = 0; i < inGameUI.Length; i++)
+	        {
+	            Destroy(inGameUI[i]);
+	        }
+
+	        gameOverText.gameObject.SetActive(true);
+	        scoreText.gameObject.SetActive(true);
+	        scoreText.text = "Your Final Score: " + finalScore + "\n Press R to restart!";
+	    }
+
+	    else
+	    {
+	        finalScore++;
 	    }
 	}
 }
