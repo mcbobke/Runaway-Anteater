@@ -7,7 +7,6 @@ public class BackgroundScroller : MonoBehaviour
 
     void Start()
     {
-        Screen.SetResolution(800, 600, false);
         Application.targetFrameRate = 60;
     }
 
