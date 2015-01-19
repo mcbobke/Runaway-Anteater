@@ -9,8 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public int collisionCount;
     public int invulnerability;
     private int hitTime;
-    private int score;
-
+    private int score;	public bool dead;
+	private Animator anim;
+	public bool gameOver;
     private Color invincibilityColor;
     public Image healthBar;
     public Text scoreText;
@@ -25,26 +26,27 @@ public class PlayerMovement : MonoBehaviour
 	    //Application.targetFrameRate = 60;
         invincibilityColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
         hitTime = 0;
+		anim = GetComponent<Animator> ();
+		gameOver = false;
+		dead = false;
         score = 0;
-        scoreText.text = "Score: " + score;
-	}
+        scoreText.text = "Score: " + score;	}
 	
 	void Update ()
 	{
-        MoveCharacter();
-        score++;
-        scoreText.text = "Score: " + score;
+		if (!dead) {
+			MoveCharacter ();
+        	score++;
+        	scoreText.text = "Score: " + score;
 
-	    if (hitTime < invulnerability)
-	    {
-	        ++hitTime;
+			if (hitTime < invulnerability) {
+					++hitTime;
 
-	        renderer.material.color = invincibilityColor;
-	    }
-	    else if (renderer.material.color == invincibilityColor)
-	    {
-	        renderer.material.color = Color.white;
-	    }
+					renderer.material.color = invincibilityColor;
+			} else if (renderer.material.color == invincibilityColor) {
+					renderer.material.color = Color.white;
+			}
+		}
 	}
 
     void MoveCharacter()
@@ -80,8 +82,9 @@ public class PlayerMovement : MonoBehaviour
                 --collisionCount;
                 healthBar.fillAmount -= 0.34f;
 
-                rigidbody2D.velocity = new Vector2(0, 0);
-            }
+				if(collisionCount == 0)
+                    killPeter();
+             }
 
             else if (hitTime < invulnerability)
             {
@@ -89,4 +92,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+	private void killPeter()
+	{
+		gameOver = true;
+		anim.SetBool("isDead", true);
+		dead = true;
+	}
 }
