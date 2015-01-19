@@ -3,20 +3,31 @@ using System.Collections;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-	//private int respawnTime = 100;
 	public bool isVertical;
 	public float minRespawnTime;
 	public float maxRespawnTime;
 	public float spawnRangeStart;
 	public float spawnRangeEnd;
+    public float percentToDecrease;
+    private int frameCount;
 	
 	public GameObject obstacle;
 	
-	// Use this for initialization
 	void Start ()
 	{
 		StartCoroutine (Spawn());
+	    frameCount = 0;
 	}
+
+    void Update()
+    {
+        frameCount++;
+
+        if (frameCount%600 == 0)
+        {
+            maxRespawnTime = maxRespawnTime - (maxRespawnTime * percentToDecrease);
+        }
+    }
 	
 	IEnumerator Spawn() 
 	{
