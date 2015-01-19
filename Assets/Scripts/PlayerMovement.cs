@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource bikeSplat;
     public AudioSource pedSplat;
     public AudioSource collideSplat;
+    public AudioSource antSoundNotFull;
+    public AudioSource antSoundFull;
 
 	void Start ()
 	{
@@ -110,16 +112,23 @@ public class PlayerMovement : MonoBehaviour
 
             if (antCount < 2)
             {
+                antSoundNotFull.Play();
                 antCount++;
                 antBar.fillAmount += 0.34f;
             }
 
             else if (collisionCount < 5)
             {
+                antSoundFull.Play();
                 collisionCount++;
                 healthBar.fillAmount += 0.2f;
                 antCount = 0;
                 antBar.fillAmount = 0f;
+            }
+
+            else if (antCount == 2 && collisionCount == 5)
+            {
+                antSoundFull.Play();
             }
             
             Destroy(collision.gameObject);

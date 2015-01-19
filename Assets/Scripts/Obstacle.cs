@@ -47,8 +47,7 @@ public class Obstacle : MonoBehaviour
             collideSound.gameObject.audio.Play();
         }
 
-        else if (collision.gameObject.tag == "ant" &&
-                 (gameObject.tag == "biker" || gameObject.tag == "ped" || gameObject.tag == "pedbikecollide"))
+        else if (collision.gameObject.tag == "ant" && (gameObject.tag == "biker" || gameObject.tag == "ped" || gameObject.tag == "pedbikecollide"))
         {
             Physics2D.IgnoreCollision(collider2D, collision.gameObject.collider2D, true);
         }
