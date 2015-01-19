@@ -9,10 +9,13 @@ public class PlayerMovement : MonoBehaviour
     public int collisionCount;
     public int invulnerability;
     private int hitTime;
+    private int score;
 
     private Color invincibilityColor;
 
     public Image healthBar;
+
+    public Text scoreText;
 
 	void Start ()
 	{
@@ -20,12 +23,15 @@ public class PlayerMovement : MonoBehaviour
 	    Application.targetFrameRate = 60;
         invincibilityColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
         hitTime = 0;
+        score = 0;
+        scoreText.text = "Score: " + score;
 	}
 	
 	void Update ()
 	{
         MoveCharacter();
-
+        score++;
+        scoreText.text = "Score: " + score;
 
 	    if (hitTime < invulnerability)
 	    {
@@ -37,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
 	    {
 	        renderer.material.color = Color.white;
 	    }
-
 	}
 
     void MoveCharacter()
