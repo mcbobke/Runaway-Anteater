@@ -12,27 +12,27 @@ Platform assembly: G:\GitHub\Runaway-Anteater\ProdBuild\testBuild_Data\Managed\A
 Loading G:\GitHub\Runaway-Anteater\ProdBuild\testBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: G:\GitHub\Runaway-Anteater\ProdBuild\testBuild_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading G:\GitHub\Runaway-Anteater\ProdBuild\testBuild_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.131 seconds
+- Completed reload, in  0.076 seconds
 <RI> Initializing input.
 <RI> Input initialized.
 desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
 Platform assembly: G:\GitHub\Runaway-Anteater\ProdBuild\testBuild_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: G:\GitHub\Runaway-Anteater\ProdBuild\testBuild_Data\Managed\System.dll (this message is harmless)
-UnloadTime: 5.400320 ms
+UnloadTime: 11.715042 ms
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
 Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 240.
-Total: 1.258751 ms (FindLiveObjects: 0.023640 ms CreateObjectMapping: 0.014273 ms MarkObjects: 0.235960 ms  DeleteObjects: 0.004906 ms)
+Total: 2.782902 ms (FindLiveObjects: 0.152102 ms CreateObjectMapping: 0.026762 ms MarkObjects: 0.447833 ms  DeleteObjects: 0.011151 ms)
 
-UnloadTime: 1.151253 ms
+UnloadTime: 1.163296 ms
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
 Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 320.
-Total: 2.801636 ms (FindLiveObjects: 0.040590 ms CreateObjectMapping: 0.027655 ms MarkObjects: 0.346580 ms  DeleteObjects: 0.060216 ms)
+Total: 2.148620 ms (FindLiveObjects: 0.036576 ms CreateObjectMapping: 0.026762 ms MarkObjects: 0.334091 ms  DeleteObjects: 0.039252 ms)
 
-UnloadTime: 2.784240 ms
+UnloadTime: 1.731563 ms
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
 Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 315.
-Total: 2.577273 ms (FindLiveObjects: 0.034791 ms CreateObjectMapping: 0.028101 ms MarkObjects: 0.351040 ms  DeleteObjects: 0.287701 ms)
+Total: 2.734283 ms (FindLiveObjects: 0.037022 ms CreateObjectMapping: 0.027209 ms MarkObjects: 0.334091 ms  DeleteObjects: 0.278780 ms)
 
