@@ -9,11 +9,16 @@ public class PlayerMovement : MonoBehaviour
     public int collisionCount;
     public int invulnerability;
     private int hitTime;
-    private int score;	public bool dead;
-	private Animator anim;
+    private int score;
+    public int antCount;
+
+    public bool dead;
 	public bool gameOver;
+
+    private Animator anim;
     private Color invincibilityColor;
     public Image healthBar;
+    public Image antBar;
     public Text scoreText;
 
     public AudioSource bikeSplat;
@@ -22,29 +27,34 @@ public class PlayerMovement : MonoBehaviour
 
 	void Start ()
 	{
-	    //Screen.SetResolution(800, 600, false);
-	    //Application.targetFrameRate = 60;
         invincibilityColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
         hitTime = 0;
 		anim = GetComponent<Animator> ();
 		gameOver = false;
 		dead = false;
         score = 0;
-        scoreText.text = "Score: " + score;	}
+	    antCount = 0;
+        scoreText.text = "Score: " + score;
+	}
 	
 	void Update ()
 	{
-		if (!dead) {
+		if (!dead) 
+        {
 			MoveCharacter ();
         	score++;
         	scoreText.text = "Score: " + score;
 
-			if (hitTime < invulnerability) {
-					++hitTime;
+			if (hitTime < invulnerability) 
+            {
+				++hitTime;
 
-					renderer.material.color = invincibilityColor;
-			} else if (renderer.material.color == invincibilityColor) {
-					renderer.material.color = Color.white;
+				renderer.material.color = invincibilityColor;
+			} 
+
+            else if (renderer.material.color == invincibilityColor) 
+            {
+				renderer.material.color = Color.white;
 			}
 		}
 	}
@@ -68,6 +78,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "biker" || collision.gameObject.tag == "ped" || collision.gameObject.tag == "pedbikecollide")
         {
+            resetPos();
+
             if (hitTime == invulnerability)
             {
                 if (collision.gameObject.tag == "biker")
@@ -80,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
                 Destroy(collision.gameObject);
                 hitTime = 0;
                 --collisionCount;
-                healthBar.fillAmount -= 0.34f;
+                healthBar.fillAmount -= 0.2f;
 
 				if(collisionCount == 0)
                     killPeter();
@@ -90,6 +102,37 @@ public class PlayerMovement : MonoBehaviour
             {
                 Physics2D.IgnoreCollision(collider2D, collision.gameObject.collider2D, true);
             }
+        }
+
+        else if (collision.gameObject.tag == "ant")
+        {
+            resetPos();
+
+            if (antCount < 2)
+            {
+                antCount++;
+                antBar.fillAmount += 0.34f;
+            }
+
+            else if (collisionCount < 5)
+            {
+                collisionCount++;
+                healthBar.fillAmount += 0.2f;
+                antCount = 0;
+                antBar.fillAmount = 0f;
+            }
+            
+            Destroy(collision.gameObject);
+        }
+    }
+
+    void resetPos()
+    {
+        Vector2 currentPos = rigidbody2D.position;
+
+        if (rigidbody2D.position.y != -2.12)
+        {
+            rigidbody2D.position = new Vector2(currentPos.x, -2.12f);
         }
     }
 
