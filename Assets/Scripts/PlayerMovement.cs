@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 		gameOver = false;
 		dead = false;
         score = 0;
-	    antCount = 0;
+	    antCount = 1;
         scoreText.text = "Score: " + score;
 	}
 	
@@ -110,11 +110,11 @@ public class PlayerMovement : MonoBehaviour
         {
             resetPos();
 
-            if (antCount < 2)
+            if (antCount < 3)
             {
                 antSoundNotFull.Play();
                 antCount++;
-                antBar.fillAmount += 0.34f;
+                antBar.fillAmount += 0.2f;
             }
 
             else if (collisionCount < 5)
@@ -122,11 +122,11 @@ public class PlayerMovement : MonoBehaviour
                 antSoundFull.Play();
                 collisionCount++;
                 healthBar.fillAmount += 0.2f;
-                antCount = 0;
-                antBar.fillAmount = 0f;
+                antCount = 1;
+                antBar.fillAmount = 0.2f;
             }
 
-            else if (antCount == 2 && collisionCount == 5)
+            else if (antCount == 3 && collisionCount == 5)
             {
                 antSoundFull.Play();
             }
