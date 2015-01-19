@@ -36,8 +36,8 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (!dead) {
 			MoveCharacter ();
-        score++;
-        scoreText.text = "Score: " + score;
+        	score++;
+        	scoreText.text = "Score: " + score;
 
 			if (hitTime < invulnerability) {
 					++hitTime;
@@ -82,8 +82,9 @@ public class PlayerMovement : MonoBehaviour
                 --collisionCount;
                 healthBar.fillAmount -= 0.34f;
 
+				if(collisionCount == 0)
                     killPeter();
-                            }
+             }
 
             else if (hitTime < invulnerability)
             {

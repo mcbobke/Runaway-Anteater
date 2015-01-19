@@ -11,11 +11,11 @@ public class gameOver : MonoBehaviour {
 	}
 	
 	void Update(){
-		Debug.Log (player);
 		if(player.GetComponent<PlayerMovement>().dead) 
 		{
 			for(int i = 0; i < tiles.Length; i++) {
 				tiles[i].GetComponent<BackgroundScroller>().speed = 0;
+				Debug.Log (tiles[i].GetComponent<BackgroundScroller>().speed);	
 			}
 			GameObject[] students = GameObject.FindGameObjectsWithTag ("ped");
 			for(int i = 0; i < students.Length; i++) {
