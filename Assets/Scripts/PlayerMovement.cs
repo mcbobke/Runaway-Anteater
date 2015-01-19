@@ -12,10 +12,12 @@ public class PlayerMovement : MonoBehaviour
     private int score;
 
     private Color invincibilityColor;
-
     public Image healthBar;
-
     public Text scoreText;
+
+    public AudioSource bikeSplat;
+    public AudioSource pedSplat;
+    public AudioSource collideSplat;
 
 	void Start ()
 	{
@@ -66,19 +68,19 @@ public class PlayerMovement : MonoBehaviour
         {
             if (hitTime == invulnerability)
             {
-                Destroy(collision.gameObject);
+                if (collision.gameObject.tag == "biker")
+                    bikeSplat.Play();
+                else if (collision.gameObject.tag == "ped")
+                    pedSplat.Play();
+                else if (collision.gameObject.tag == "pedbikecollide")
+                    collideSplat.Play();
 
+                Destroy(collision.gameObject);
                 hitTime = 0;
                 --collisionCount;
                 healthBar.fillAmount -= 0.34f;
 
-                if (collisionCount == 0)
-                    Destroy(gameObject);
-
-                else
-                {
-                    rigidbody2D.velocity = new Vector2(0, 0);
-                }
+                rigidbody2D.velocity = new Vector2(0, 0);
             }
 
             else if (hitTime < invulnerability)
