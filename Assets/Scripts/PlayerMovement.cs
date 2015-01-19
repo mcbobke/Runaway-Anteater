@@ -59,11 +59,6 @@ public class PlayerMovement : MonoBehaviour
 				renderer.material.color = Color.white;
 			}
 		}
-
-	    if (Input.GetKey(KeyCode.R))
-	    {
-	        Application.LoadLevel(2);
-	    }
 	}
 
     void MoveCharacter()

@@ -55,6 +55,11 @@ public class gameOver : MonoBehaviour {
 	        gameOverText.gameObject.SetActive(true);
 	        scoreText.gameObject.SetActive(true);
 	        scoreText.text = "Your Final Score: " + finalScore + "\n Press R to restart!";
+
+            if (Input.GetKey(KeyCode.R))
+            {
+                Application.LoadLevel(2);
+            }
 	    }
 
 	    else
