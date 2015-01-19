@@ -21,8 +21,8 @@ public class PlayerMovement : MonoBehaviour
 
 	void Start ()
 	{
-	    Screen.SetResolution(800, 600, false);
-	    Application.targetFrameRate = 60;
+	    //Screen.SetResolution(800, 600, false);
+	    //Application.targetFrameRate = 60;
         invincibilityColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
         hitTime = 0;
         score = 0;

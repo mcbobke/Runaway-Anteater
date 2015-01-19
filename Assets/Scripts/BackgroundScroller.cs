@@ -5,6 +5,12 @@ public class BackgroundScroller : MonoBehaviour
 {
     public float speed;
 
+    void Start()
+    {
+        Screen.SetResolution(800, 600, false);
+        Application.targetFrameRate = 60;
+    }
+
 	void Update ()
 	{
 	    Scroll();
