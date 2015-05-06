@@ -14,3 +14,5 @@ This game was created during the 2015 Winter Quarter Game Jam hosted by the Vide
 
 ## How to Play
 Download the ProdBuild folder and run the executable (Windows). Otherwise, clone the project and run the "start_menu" scene, or build the project for your platform.
+
+Use the left and right arrow keys to avoid oncoming bikers and students that are crossing the road. Collect ants to increase your life count. Survive as long as possible!
