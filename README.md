@@ -11,3 +11,6 @@ This game was created during the 2015 Winter Quarter Game Jam hosted by the Vide
 | Nick Smith | smithne@uci.edu | Programmer|
 | Nina Volkmuth | ninavolkmuth@gmail.com | Programmer |
 | Kevin Wong | wong.kevin47@gmail.com | Programmer |
+
+## How to Play
+Download the ProdBuild folder and run the executable (Windows). Otherwise, clone the project and run the "start_menu" scene, or build the project for your platform.
